@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FACE++ - Login/Registro</title>
+    <link rel="shortcut icon" href="fondo.jpg" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="camera-container">
+            <h1>Inicia Sesión / Registra tu Rostro</h1>
+            <video id="video" width="320" height="240" autoplay></video>
+            <button id="registerBtn">Registrar Rostro</button>
+            <button id="loginBtn">Iniciar Sesión</button>
+        </div>
+
+        <div class="info-container">
+            <button id="createFaceSetBtn">Crear Reconocimiento</button>
+            <div id="contenido"></div>
+        </div>
+    </div>
+
+    <script src="https://sdk.faceplusplus.com/js/faceplusplus.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Obtener acceso a la cámara del usuario
+        const video = document.getElementById('video');
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                console.error("Error al acceder a la cámara: " + err);
+            });
+    </script>
+</body>
+</html>
